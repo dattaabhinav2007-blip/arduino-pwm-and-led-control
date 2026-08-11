@@ -1,1 +1,95 @@
+// Code for blinks of a LED 
+int blinks;
+int j;
+int dt=100;
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(ledPin, OUTPUT);
+}
+void loop() {
+// put your main code here, to run repeatedly:
+Serial.println(msg);
+while(Serial.available()=0) {
+ }
+blinks-Serial.parseInt();
+for(j=1;j<=blinks;j++){
+digitalWrite(ledPin, HIGH);
+delay(dt);
+digitalWrite(ledPin, LOW);
+delay(dt);
+}
+}
 
+
+//Code for increasing brightness of the LED
+int ledPin=9;
+int dt=1000;
+void setup() {
+// put your setup code here, to run once:
+pinMode(ledPin, OUTPUT);
+ }
+void loop(){
+// put your main code here, to run repeatedly:
+analogWrite(ledPin,0);
+delay(dt);
+analogWrite(ledPin, 50);
+delay(dt);
+analogWrite(ledPin, 100);
+delay(dt);
+analogWrite(ledPin, 150);
+delay(dt);
+analogWrite(ledPin, 200);
+delay(dt);
+analogWrite(ledPin, 255);
+delay(dt);
+}
+
+
+//DIMMABLE LED PROJECT
+int potPin=A2;
+int gPin=9;
+int potval;
+float Ledval;
+int dt=500;
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+pinMode (potPin, INPUT);
+pinMode(gPin, OUTPUT);
+}
+void loop()
+// put your main code here, to run repeated
+potval-analogRead(potPin);
+LedVal=(255./1023.)*potval;
+analogWrite(gPin, LedVal);
+Serial.println(LedVal);
+delay(dt);
+}
+
+
+//Maintainance of brightness through digital pins 
+int myPin=A2;
+int readval;
+int ledPin=9;
+int dt=250;
+float v2;
+void setup() {
+// put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(myPin, INPUT);
+pinMode(ledPin, OUTPUT);
+}
+void loop() {
+// put your main code here, to run repeatedly:
+readval-analogRead(myPin);
+v2=(5./1023.)*readval;
+Serial.println(v2);
+if(v2>4.0){
+  digitalWrite(ledPin, HIGH);
+}
+else{
+   digitalWrite(ledPin, LOW);
+}
+delay(dt);
+}
